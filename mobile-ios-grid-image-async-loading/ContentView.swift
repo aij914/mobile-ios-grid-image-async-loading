@@ -48,9 +48,9 @@ struct ContentView: View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: [
-                    GridItem(.flexible(minimum: 100, maximum: 200), spacing: 12),
-                    GridItem(.flexible(minimum: 100, maximum: 200), spacing: 12),
-                    GridItem(.flexible(minimum: 100, maximum: 200))
+                    GridItem(.flexible(minimum: 100, maximum: 200), spacing: 12, alignment: .top),
+                    GridItem(.flexible(minimum: 100, maximum: 200), spacing: 12, alignment: .top),
+                    GridItem(.flexible(minimum: 100, maximum: 200), alignment: .top)
                 ], spacing:12, content: {
                     ForEach(vm.results, id: \.self) { result in
                         VStack (alignment: .leading, spacing: 0, content: {
@@ -58,7 +58,7 @@ struct ContentView: View {
                             Text(result.name).font(.system(size: 10, weight:.semibold))
                             Text(result.releaseDate).font(.system(size: 9, weight:.regular))
                             Text(result.copyright).font(.system(size: 9, weight:.regular)).foregroundColor(.gray)
-                        }).padding().background(Color.red)
+                        }).padding(.horizontal)
                     }
 
                 }).padding(.horizontal, 12)
