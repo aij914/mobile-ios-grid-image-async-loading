@@ -7,7 +7,43 @@
 
 import SwiftUI
 
+struct RSS: Decodable {
+    let feed: Feed
+}
+
+struct Feed: Decodable {
+    let results:[Result]
+}
+
+struct Result:Decodable, Hashable {
+    let name, releaseDate, copyright: String
+}
+
+class GridViewModel: ObservableObject {
+    @Published var items = 0..<10
+    @Published var results = [Result]()
+
+    init() {
+        guard let url = URL(string: "https://rss.itunes.apple.com/api/v1/cn/ios-apps/top-free/all/100/explicit.json") else {
+            return
+        }
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let rss = try JSONDecoder().decode(RSS.self, from: data)
+                    print(rss)
+                self.results = rss.feed.results
+            } catch {
+                print("Failed to decode: \(error)")
+            }
+        }.resume()
+    }
+}
+
 struct ContentView: View {
+    
+    @ObservedObject var vm = GridViewModel()
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -16,12 +52,12 @@ struct ContentView: View {
                     GridItem(.flexible(minimum: 100, maximum: 200), spacing: 12),
                     GridItem(.flexible(minimum: 100, maximum: 200))
                 ], spacing:12, content: {
-                    ForEach(0..<20, id: \.self) { num in
+                    ForEach(vm.results, id: \.self) { result in
                         VStack (alignment: .leading, spacing: 0, content: {
                             Spacer().frame(width: 100, height: 100, alignment: .center).background(Color.blue)
-                            Text("App Title").font(.system(size: 10, weight:.semibold))
-                            Text("Relesase Date").font(.system(size: 9, weight:.regular))
-                            Text("Copyright").font(.system(size: 9, weight:.regular)).foregroundColor(.gray)
+                            Text(result.name).font(.system(size: 10, weight:.semibold))
+                            Text(result.releaseDate).font(.system(size: 9, weight:.regular))
+                            Text(result.copyright).font(.system(size: 9, weight:.regular)).foregroundColor(.gray)
                         }).padding().background(Color.red)
                     }
 
