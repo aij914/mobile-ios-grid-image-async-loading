@@ -16,7 +16,7 @@ struct Feed: Decodable {
 }
 
 struct Result:Decodable, Hashable {
-    let name, releaseDate, copyright: String
+    let name, releaseDate, copyright, artworkUrl100: String
 }
 
 class GridViewModel: ObservableObject {

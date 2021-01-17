@@ -1,0 +1,6 @@
+framework module Pods_mobile_ios_grid_image_async_loading_mobile_ios_grid_image_async_loadingUITests {
+  umbrella header "Pods-mobile-ios-grid-image-async-loading-mobile-ios-grid-image-async-loadingUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

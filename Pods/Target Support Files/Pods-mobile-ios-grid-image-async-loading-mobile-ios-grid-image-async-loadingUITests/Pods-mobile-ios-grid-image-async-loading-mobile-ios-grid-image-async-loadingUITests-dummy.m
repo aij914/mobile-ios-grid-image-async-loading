@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_mobile_ios_grid_image_async_loading_mobile_ios_grid_image_async_loadingUITests : NSObject
+@end
+@implementation PodsDummy_Pods_mobile_ios_grid_image_async_loading_mobile_ios_grid_image_async_loadingUITests
+@end
