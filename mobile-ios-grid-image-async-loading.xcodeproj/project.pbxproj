@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -97,7 +97,6 @@
 				EB1BF799E1A077E973633211 /* Pods-mobile-ios-grid-image-async-loadingTests.debug.xcconfig */,
 				25C0B631FB147687122D58AC /* Pods-mobile-ios-grid-image-async-loadingTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

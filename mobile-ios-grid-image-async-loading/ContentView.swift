@@ -80,7 +80,7 @@ struct AppView: View {
     var body: some View {
         VStack (alignment: .leading, spacing: 4, content: {
             
-            KFImage(URL(string: result.artworkUrl100)).resizable().scaledToFit().cornerRadius(22).overlay(RoundedRectangle(cornerRadius: 22).stroke(Color.gray, lineWidth: 0.5))
+            KFImage(URL(string: result.artworkUrl100)).resizable().scaledToFit().cornerRadius(22).overlay(RoundedRectangle(cornerRadius: 22).stroke(Color(.systemGray4), lineWidth: 0.5))
             Text(result.name).font(.system(size: 10, weight:.semibold)).padding(.top, 4)
             Text(result.releaseDate).font(.system(size: 9, weight:.regular))
             Text(result.copyright).font(.system(size: 9, weight:.regular)).foregroundColor(.gray)
